@@ -1,12 +1,12 @@
 return {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     dependencies = { 
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-file-browser.nvim',
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-file-browser.nvim",
     },
-    config = function ()
+    config = function()
         -- Telescope setup
-        require('telescope').setup({
+        require("telescope").setup({
             defaults = {
                 mappings = {
                     i = { -- Insert mode mappings
@@ -25,9 +25,9 @@ return {
         })
 
         -- Keybindings for Telescope
-        local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, { noremap = true, silent = true, desc = "Find Files" })
-        vim.keymap.set('n', '<leader>g', builtin.live_grep, { noremap = true, silent = true, desc = "Live Grep" })
-        vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true, silent = true, desc = "Telescope File Browser" })   
+        local builtin = require("telescope.builtin")
+        vim.keymap.set('n', "<leader>ff", builtin.find_files, { noremap = true, silent = true, desc = "Find Files" })
+        vim.keymap.set('n', "<leader>g", builtin.live_grep, { noremap = true, silent = true, desc = "Live Grep" })
+        vim.keymap.set('n', "<space>fb", ":Telescope file_browser<CR>", { noremap = true, silent = true, desc = "Telescope File Browser" })   
     end,
 }
