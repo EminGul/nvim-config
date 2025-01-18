@@ -9,12 +9,15 @@ return {
             require("mason").setup()
         end,
     },
+    { -- Install cmp-nvim-lsp 
+        "hrsh7th/cmp-nvim-lsp",
+        dependencies = { "nvim-cmp" },
+    },
     { -- Mason-lspconfig maps the mason name to its respective lsp-config name for the language setup (eg. lspconfig.[language].setup())
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "mason.nvim" },
+        dependencies = { "mason.nvim", "cmp-nvim-lsp" },
         config = function()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             require("mason-lspconfig").setup()
 
