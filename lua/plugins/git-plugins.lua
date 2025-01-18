@@ -1,6 +1,7 @@
 return {
     {   -- Lazygit.nvim
         "kdheepak/lazygit.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         cmd = {
             "LazyGit",
             "LazyGitConfig",
@@ -19,8 +20,12 @@ return {
     },
     {   -- Gitsigns.nvim
         "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("gitsigns").setup()
+            require("gitsigns").setup({
+                numhl = true,       -- Line number colour changes
+                signcolumn = false, -- Remove sign column
+            })
         end,
     }
 }

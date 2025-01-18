@@ -1,6 +1,7 @@
 return {
     { -- Install lspconfig
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
     },
     { -- Install Mason
         "williamboman/mason.nvim",
@@ -12,10 +13,17 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
         config = function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
+
             require("mason-lspconfig").setup()
+
+            -- Add LSP configurations
             require("mason-lspconfig").setup_handlers({
                 function(server_name)
-                    require("lspconfig")[server_name].setup({})
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
                 end,
             })
         end,
