@@ -37,6 +37,7 @@ return { -- See Josean Martinez's video on LSP setup
             }),
             -- sources for autocompletion (priority based on order)
             sources = cmp.config.sources({
+                { name = "nvim_lsp" },
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" },  -- text within current buffer
                 { name = "path" },    -- file system paths
