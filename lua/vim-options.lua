@@ -36,3 +36,7 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.o.signcolumn = "yes"
+vim.diagnostic.config({
+    update_in_insert = true,
+})
